@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Christmas Star</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Christmas-themed background: Dark night sky with subtle gradient */
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden; /* Prevent scrollbars */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Snowfall animation: Multiple snowflakes falling */
+        .snowflake {
+            position: absolute;
+            color: #ffffff;
+            font-size: 1rem;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            pointer-events: none;
+        }
+
+        /* Randomize snowflake positions and speeds */
+        .snowflake:nth-child(1) { left: 10%; animation-duration: 10s; animation-delay: 0s; }
+        .snowflake:nth-child(2) { left: 20%; animation-duration: 12s; animation-delay: 2s; }
+        .snowflake:nth-child(3) { left: 30%; animation-duration: 8s; animation-delay: 4s; }
+        .snowflake:nth-child(4) { left: 40%; animation-duration: 15s; animation-delay: 1s; }
+        .snowflake:nth-child(5) { left: 50%; animation-duration: 11s; animation-delay: 3s; }
+        .snowflake:nth-child(6) { left: 60%; animation-duration: 9s; animation-delay: 5s; }
+        .snowflake:nth-child(7) { left: 70%; animation-duration: 13s; animation-delay: 0.5s; }
+        .snowflake:nth-child(8) { left: 80%; animation-duration: 10s; animation-delay: 2.5s; }
+        .snowflake:nth-child(9) { left: 90%; animation-duration: 14s; animation-delay: 1.5s; }
+        .snowflake:nth-child(10) { left: 5%; animation-duration: 7s; animation-delay: 3.5s; }
+
+        @keyframes fall {
+            0% { top: -10%; transform: translateX(0) rotate(0deg); }
+            100% { top: 110%; transform: translateX(20px) rotate(360deg); }
+        }
+
+        /* Subtle Christmas ornaments/lights in the background */
+        .ornament {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #ff0000 50%, #800000 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff0000;
+            animation: twinkle 2s ease-in-out infinite alternate;
+        }
+
+        .ornament:nth-child(1) { top: 20%; left: 15%; }
+        .ornament:nth-child(2) { top: 30%; right: 20%; background: radial-gradient(circle, #00ff00 50%, #008000 100%); box-shadow: 0 0 10px #00ff00; }
+        .ornament:nth-child(3) { top: 50%; left: 10%; }
+        .ornament:nth-child(4) { top: 70%; right: 15%; background: radial-gradient(circle, #ffff00 50%, #808000 100%); box-shadow: 0 0 10px #ffff00; }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Container for the star, ensuring responsiveness */
+        .star-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10; /* Above background elements */
+        }
+
+        /* SVG golden star with warm glow, standing still */
+        .star {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px #ffd700) drop-shadow(0 0 40px #ffed4e); /* Golden glow */
+            /* Removed rotation animation to make it stand still */
+            transition: filter 0.3s ease; /* Smooth hover transition */
+        }
+
+        /* Hover effect to enhance golden glow */
+        .star:hover {
+            filter: drop-shadow(0 0 30px #ffd700) drop-shadow(0 0 60px #ffed4e) drop-shadow(0 0 90px #ffb347);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .star-container {
+                width: 200px;
+                height: 200px;
+            }
+            .snowflake {
+                font-size: 0.8rem;
+            }
+            .ornament {
+                width: 15px;
+                height: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .star-container {
+                width: 150px;
+                height: 150px;
+            }
+            .snowflake {
+                font-size: 0.6rem;
+            }
+            .ornament {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Christmas elements: Snowflakes and ornaments -->
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+
+    <div class="ornament"></div>
+    <div class="ornament"></div>
+    <div class="ornament"></div>
+    <div class="ornament"></div>
+
+    <!-- Centered golden star -->
+    <div class="star-container">
+        <!-- SVG star shape with golden gradient fill -->
+        <svg class="star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Gradient for the golden star fill -->
+                <linearGradient id="starGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#ffed4e;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#ffb347;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <!-- Five-pointed star path -->
+            <path d="M50 10 L61 35 L90 35 L68 57 L79 82 L50 65 L21 82 L32 57 L10 35 L39 35 Z" fill="url(#starGradient)" />
+        </svg>
+    </div>
+
+    <!-- Minimal JavaScript for potential enhancements -->
+    <script>
+        // Optional: Log for debugging or future dynamic additions
+        console.log("Golden Christmas star loaded. Merry Christmas!");
+    </script>
+</body>
+</html>
